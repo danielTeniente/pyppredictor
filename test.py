@@ -1,5 +1,6 @@
 # testing file
 
+from datetime import date
 import unittest
 import functions 
 
@@ -111,6 +112,25 @@ class TestGetDay(unittest.TestCase):
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
 
+# testing if the function get the correct day
+class TestGetDateValues(unittest.TestCase):
+    def test_gdv1(self):
+        module_response = functions.get_date_values(date='10/09/14')
+        sol = (10,9,14)
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
+    def test_gdv2(self):
+        module_response = functions.get_date_values(date='12/5/19')
+        #solution
+        sol = (12,5,19)
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
+    def test_gd3(self):
+        module_response = functions.get_date_values(date='14/2/22')
+        #solution
+        sol = (14,2,22)
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
 
 if __name__ == '__main__':
     unittest.main()
