@@ -17,3 +17,12 @@ def verify_hour(hour):
     is_real_s = s>=0 and s<60
 
     return is_real_h and is_real_m and is_real_s
+
+
+#should verify that the date is correct
+# pico y placa doesn't exist before 2010 in Quito
+# also, I asume that the current rules will be aplyed for the next
+# 10 years and no more than that
+# format: dd/mm/aa
+def verify_date(date):
+    return True
