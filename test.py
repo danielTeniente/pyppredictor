@@ -66,7 +66,7 @@ class TestVerifyDate(unittest.TestCase):
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
     def test_vd_format(self):
-        module_response = functions.verify_date(date='15/06/08/08')
+        module_response = functions.verify_date(date='15/06/2008')
         #solution
         sol = False
         self.assertEqual(module_response, sol, 
