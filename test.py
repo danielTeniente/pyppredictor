@@ -25,7 +25,7 @@ class TestVerifyHour(unittest.TestCase):
             f'Your solution is {module_response} rather than {sol}')
         
     def test_vh_format(self):
-        module_response = functions.verify_hour(hour='2:0:0')
+        module_response = functions.verify_hour(hour='20:30:20:20:30')
         #solution
         sol = False
         self.assertEqual(module_response, sol, 
@@ -48,25 +48,25 @@ class TestVerifyHour(unittest.TestCase):
 
 class TestVerifyDate(unittest.TestCase):
     def test_vd_year(self):
-        module_response = functions.verify_date(date='15/04/00')
+        module_response = functions.verify_date(date='15/04/02')
         #solution
         sol = False
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
     def test_vd_day(self):
-        module_response = functions.verify_date(date='79/04/10')
+        module_response = functions.verify_date(date='30/02/10')
         #solution
         sol = False
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
     def test_vd_month(self):
-        module_response = functions.verify_date(date='15/13/00')
+        module_response = functions.verify_date(date='15/13/15')
         #solution
         sol = False
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
     def test_vd_format(self):
-        module_response = functions.verify_date(date='15/06/2008')
+        module_response = functions.verify_date(date='15/06/08/08')
         #solution
         sol = False
         self.assertEqual(module_response, sol, 
