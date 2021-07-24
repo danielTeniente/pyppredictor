@@ -23,8 +23,10 @@ def verify_hour(hour):
 #should verify that the date is correct
 # pico y placa doesn't exist before 2010 in Quito
 # also, I assume that the current rule will be applied for the next years
+# until 2099
 # format: dd/mm/yy
 def verify_date(date):
+
     try:
         #if can't pack the values, the format is incorrect
         d,m,y = map(int,date.split('/'))
@@ -33,6 +35,6 @@ def verify_date(date):
     except ValueError:
         return False
     
-    is_there_a_rule = y>=10 
+    is_there_a_rule = y>=10 and y<100
 
     return is_there_a_rule
