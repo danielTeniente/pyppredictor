@@ -5,9 +5,6 @@
 import re
 import datetime
 
-# know if the current plate is in pico y placa
-
-
 def verify_hour(hour):
     
     # should respect the format
@@ -64,7 +61,7 @@ def get_pico_placa_rule(y,m):
     if(y>21 or (y==21 and m>6)):
         rule['id'] = 4
             #(start, ending), (start, ending)...
-        rule['Hours'] = [(datetime.time(7, 0, 0),datetime.time(19, 0, 0))]
+        rule['Hours'] = [((7, 0, 0),(19, 0, 0))]
             #key: days of the week
             #value: final number of plates
         rule['Days'] = {}
@@ -80,7 +77,7 @@ def get_pico_placa_rule(y,m):
     elif((y==20 and m>5) or y==21):
         rule['id'] = 3
             #(start, ending), (start, ending)...
-        rule['Hours'] = [(datetime.time(4, 0, 0),datetime.time(23, 0, 0))]
+        rule['Hours'] = [((4, 0, 0),(23, 0, 0))]
             #key: days of the week
             #value: final number of plates
         rule['Days'] = {}
@@ -97,7 +94,7 @@ def get_pico_placa_rule(y,m):
     elif((y==19 and m>8) or y==20):
         rule['id'] = 2
             #(start, ending), (start, ending)...
-        rule['Hours'] = [(datetime.time(5, 0, 0),datetime.time(20, 0, 0))]
+        rule['Hours'] = [((5, 0, 0),(20, 0, 0))]
             #key: days of the week
             #value: final number of plates
         rule['Days'] = {}
@@ -110,8 +107,8 @@ def get_pico_placa_rule(y,m):
     else:
         rule['id'] = 1
             #(start, ending), (start, ending)...
-        rule['Hours'] = [(datetime.time(7, 0, 0),datetime.time(9, 30, 0)),
-                        (datetime.time(16,0,0),datetime.time(19,30,0))]
+        rule['Hours'] = [((7, 0, 0),(9, 30, 0)),
+                        ((16,0,0),(19,30,0))]
             #key: days of the week
             #value: final number of plates
         rule['Days'] = {}
@@ -123,3 +120,13 @@ def get_pico_placa_rule(y,m):
                 num_plate+=1
             
     return rule
+
+# know if the input time is in pico y placa range
+def time_is_in_pyp(hour,h_ranges):
+    h,m,s = map(int,hour.split(':'))
+    is_in_range = False
+    for r in h_ranges:
+        start = datetime.time(r[0][0], r[0][1], r[0][2])
+        end = datetime.time(r[1][0], r[1][1], r[1][2])
+        is_in_range |= datetime.time(h,m,s)>=start and datetime.time(h,m,s)<=end
+    return is_in_range

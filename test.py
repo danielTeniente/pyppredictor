@@ -131,7 +131,7 @@ class TestGetDateValues(unittest.TestCase):
         sol = (14,2,22)
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
-            
+
 class TestGetRules(unittest.TestCase):
     def test_gr_1(self):
         module_response = functions.get_pico_placa_rule(14,4)
@@ -178,6 +178,26 @@ class TestGetRules(unittest.TestCase):
         sol = ['0','1','8','9']
         self.assertEqual(sorted(days_n), sol, 
             f'Your solution is {days_n} rather than {sol}')
+
+class TestIsPyP(unittest.TestCase):
+    def test_earlier(self):
+        module_response = functions.time_is_in_pyp(hour='04:59:59',
+                            h_ranges=[((5, 0, 0),(20, 0, 0))])
+        sol = False
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
+    def test_in_time(self):
+        module_response = functions.time_is_in_pyp(hour='14:30:20',
+                            h_ranges=[((7, 0, 0),(19, 0, 0))])
+        sol = True
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
+    def test_in_bet(self):
+        module_response = functions.time_is_in_pyp(hour='12:30:30',
+                            h_ranges=[((7, 0, 0),(9, 30, 0)),((16,0,0),(19,30,0))])
+        sol = False
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
 
 if __name__ == '__main__':
     unittest.main()
