@@ -47,7 +47,8 @@ def verify_date(date):
 
 #get values from date
 def get_date_values(date):
-    return (0,0,0)    
+    d,m,y = map(int,date.split('/'))
+    return (d,m,y)    
 
 # get day of the week inserting the date
 def get_day_of_week(d,m,y):
