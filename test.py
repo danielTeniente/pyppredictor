@@ -83,8 +83,34 @@ class TestVerifyDate(unittest.TestCase):
         sol = True
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
-    
 
-        
+# testing if the function get the correct day
+class TestGetDay(unittest.TestCase):
+    def test_gd_monday(self):
+        module_response = functions.get_day_of_week(date='09/07/12')
+        #solution 1 = monday
+        sol = 1
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
+    def test_gd_tuesday(self):
+        module_response = functions.get_day_of_week(date='01/03/22')
+        #solution
+        sol = 2
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
+    def test_gd_friday(self):
+        module_response = functions.get_day_of_week(date='23/07/21')
+        #solution
+        sol = 5
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
+    def test_gd_sunday(self):
+        module_response = functions.get_day_of_week(date='05/12/21')
+        #solution
+        sol = 7
+        self.assertEqual(module_response, sol, 
+            f'Your solution is {module_response} rather than {sol}')
+
+
 if __name__ == '__main__':
     unittest.main()

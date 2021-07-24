@@ -5,7 +5,6 @@
 import re
 import datetime
 
-# get day of the week inserting the date
 
 # get pico y placa rule inserting the year
 
@@ -45,3 +44,8 @@ def verify_date(date):
     is_there_a_rule = y>=10 and y<100
 
     return is_there_a_rule
+
+# get day of the week inserting the date
+def get_day_of_week(date):
+    day = 0
+    return day
