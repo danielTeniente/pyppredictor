@@ -87,25 +87,25 @@ class TestVerifyDate(unittest.TestCase):
 # testing if the function get the correct day
 class TestGetDay(unittest.TestCase):
     def test_gd_monday(self):
-        module_response = functions.get_day_of_week(date='09/07/12')
+        module_response = functions.get_day_of_week(d=9,m=7,y=12)
         #solution 1 = monday
         sol = 1
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
     def test_gd_tuesday(self):
-        module_response = functions.get_day_of_week(date='01/03/22')
+        module_response = functions.get_day_of_week(1,3,22)
         #solution
         sol = 2
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
     def test_gd_friday(self):
-        module_response = functions.get_day_of_week(date='23/07/21')
+        module_response = functions.get_day_of_week(23,7,21)
         #solution
         sol = 5
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
     def test_gd_sunday(self):
-        module_response = functions.get_day_of_week(date='05/12/21')
+        module_response = functions.get_day_of_week(5,12,21)
         #solution
         sol = 7
         self.assertEqual(module_response, sol, 
