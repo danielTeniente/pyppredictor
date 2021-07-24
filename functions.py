@@ -4,6 +4,13 @@
 
 import re
 
+# get day of the week inserting the date
+
+# get pico y placa rule inserting the year
+
+# know if the current plate is in pico y placa
+
+
 def verify_hour(hour):
     
     # should respect the format
