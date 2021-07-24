@@ -32,9 +32,16 @@ class TestSum(unittest.TestCase):
                 f'Area is shown {module_response} rather than {sol}')
 
     def test_vh_numbers(self):
-            module_response = functions.verify_hour(hour='2:0:0')
+            module_response = functions.verify_hour(hour='ab:cd:fg')
             #solution
             sol = False
+            self.assertEqual(module_response, sol, 
+                f'Area is shown {module_response} rather than {sol}')
+
+    def test_vh_correct(self):
+            module_response = functions.verify_hour(hour='12:30:25')
+            #solution
+            sol = True
             self.assertEqual(module_response, sol, 
                 f'Area is shown {module_response} rather than {sol}')
         
