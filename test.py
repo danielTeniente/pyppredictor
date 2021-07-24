@@ -131,6 +131,53 @@ class TestGetDateValues(unittest.TestCase):
         sol = (14,2,22)
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
+            
+class TestGetRules(unittest.TestCase):
+    def test_gr_1(self):
+        module_response = functions.get_pico_placa_rule(14,4)
+        #first rule
+        rule_id = module_response['id']
+        sol = 1
+        self.assertEqual(rule_id, sol, 
+            f'Your solution is {rule_id} rather than {sol}')
+    def test_gr_2(self):
+        module_response = functions.get_pico_placa_rule(19,9)
+        rule_id = module_response['id']
+        sol = 2
+        self.assertEqual(rule_id, sol, 
+            f'Your solution is {rule_id} rather than {sol}')
+    def test_gr_3(self):
+        module_response = functions.get_pico_placa_rule(21,1)
+        rule_id = module_response['id']
+        sol = 3
+        self.assertEqual(rule_id, sol, 
+            f'Your solution is {rule_id} rather than {sol}')
+    def test_gr_4(self):
+        module_response = functions.get_pico_placa_rule(22,4)
+        rule_id = module_response['id']
+        sol = 4
+        self.assertEqual(rule_id, sol, 
+            f'Your solution is {rule_id} rather than {sol}')
+    def test_gr_ranges(self):
+        module_response = functions.get_pico_placa_rule(11,4)
+        range_number = len(module_response['Hours'])
+        sol = 2
+        self.assertEqual(range_number, sol, 
+            f'Your solution is {range_number} rather than {sol}')
+    def test_gr_plates_r4_monday(self):
+        module_response = functions.get_pico_placa_rule(22,4)
+        #monday
+        days_n = module_response['Days'][1]
+        sol = ['0','1','2','3']
+        self.assertEqual(sorted(days_n), sol, 
+            f'Your solution is {days_n} rather than {sol}')
+    def test_gr_plates_r4_friday(self):
+        module_response = functions.get_pico_placa_rule(22,4)
+        #friday
+        days_n = module_response['Days'][5]
+        sol = ['0','1','8','9']
+        self.assertEqual(sorted(days_n), sol, 
+            f'Your solution is {days_n} rather than {sol}')
 
 if __name__ == '__main__':
     unittest.main()
