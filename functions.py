@@ -47,5 +47,7 @@ def verify_date(date):
 
 # get day of the week inserting the date
 def get_day_of_week(date):
-    day = 0
-    return day
+    d,m,y = map(int,date.split('/'))
+    day = datetime.datetime(y, m, d)
+    return day.weekday()+1
+
