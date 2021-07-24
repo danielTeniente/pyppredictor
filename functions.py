@@ -55,10 +55,67 @@ def get_day_of_week(date):
 # 3  since June 2020 to July 2021: 4:00-23:00 Pandemic situation
 # 4  July 2021: 7:00-19:00 Hoy no circula
 def get_pico_placa_rule(y,m):
-    rule = {'id' : 0,
-        #(start, ending), (start, ending)...
-        'Hours':[(datetime.time(0, 0, 0),datetime.time(0, 0, 0))],
-        #key: plates final number
-        #value: days of the week
-        'Plates':{'':[]}}
+    rule = {}
+    # july = 7
+    if(y>21 or (y==21 and m>6)):
+        rule['id'] = 4
+            #(start, ending), (start, ending)...
+        rule['Hours'] = [(datetime.time(7, 0, 0),datetime.time(19, 0, 0))]
+            #key: days of the week
+            #value: final number of plates
+        rule['Days'] = {}
+        # 4 numbers are restricted each day of the rule
+        num_plate = 0
+        for i in range(5):
+            rule['Days'][i+1] = []
+            while(len(rule['Days'][i+1])!=4):
+                rule['Days'][i+1].append(str(num_plate)[-1])
+                num_plate+=1
+            num_plate-=2
+    # june = 6
+    elif((y==20 and m>5) or y==21):
+        rule['id'] = 3
+            #(start, ending), (start, ending)...
+        rule['Hours'] = [(datetime.time(4, 0, 0),datetime.time(23, 0, 0))]
+            #key: days of the week
+            #value: final number of plates
+        rule['Days'] = {}
+        # restricted even or odd
+        for i in range(1,7,2):
+            rule['Days'][i] = []
+            for j in range(1,10,2):
+                rule['Days'][i].append(str(j))
+        for i in range(2,7,2):
+            rule['Days'][i] = []
+            for j in range(0,10,2):
+                rule['Days'][i].append(str(j))
+    #september = 9
+    elif((y==19 and m>8) or y==20):
+        rule['id'] = 2
+            #(start, ending), (start, ending)...
+        rule['Hours'] = [(datetime.time(5, 0, 0),datetime.time(20, 0, 0))]
+            #key: days of the week
+            #value: final number of plates
+        rule['Days'] = {}
+        num_plate = 0
+        for i in range(5):
+            rule['Days'][i+1] = []
+            for _ in range(2):
+                rule['Days'][i+1].append(str(num_plate)[-1])
+                num_plate+=1
+    else:
+        rule['id'] = 1
+            #(start, ending), (start, ending)...
+        rule['Hours'] = [(datetime.time(7, 0, 0),datetime.time(9, 30, 0)),
+                        (datetime.time(16,0,0),datetime.time(19,30,0))]
+            #key: days of the week
+            #value: final number of plates
+        rule['Days'] = {}
+        num_plate = 0
+        for i in range(5):
+            rule['Days'][i+1] = []
+            for _ in range(2):
+                rule['Days'][i+1].append(str(num_plate)[-1])
+                num_plate+=1
+            
     return rule
