@@ -111,6 +111,36 @@ class TestGetDay(unittest.TestCase):
         self.assertEqual(module_response, sol, 
             f'Your solution is {module_response} rather than {sol}')
 
+# testing if the function get the correct day
+class TestGetRules(unittest.TestCase):
+    def test_gr_1(self):
+        module_response = functions.get_pico_placa_rule(20,4)
+        #first rule
+        rule_id = module_response['id']
+        sol = 1
+        self.assertEqual(rule_id, sol, 
+            f'Your solution is {rule_id} rather than {sol}')
+    def test_gr_2(self):
+        module_response = functions.get_pico_placa_rule(20,4)
+        #first rule
+        rule_id = module_response['id']
+        sol = 2
+        self.assertEqual(rule_id, sol, 
+            f'Your solution is {rule_id} rather than {sol}')
+    def test_gr_3(self):
+        module_response = functions.get_pico_placa_rule(20,4)
+        #first rule
+        rule_id = module_response['id']
+        sol = 3
+        self.assertEqual(rule_id, sol, 
+            f'Your solution is {rule_id} rather than {sol}')
+    def test_gr_4(self):
+        module_response = functions.get_pico_placa_rule(20,4)
+        #first rule
+        rule_id = module_response['id']
+        sol = 4
+        self.assertEqual(rule_id, sol, 
+            f'Your solution is {rule_id} rather than {sol}')
 
 if __name__ == '__main__':
     unittest.main()

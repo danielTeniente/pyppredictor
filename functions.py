@@ -5,9 +5,6 @@
 import re
 import datetime
 
-
-# get pico y placa rule inserting the year
-
 # know if the current plate is in pico y placa
 
 
@@ -51,3 +48,17 @@ def get_day_of_week(date):
     day = datetime.datetime(y, m, d)
     return day.weekday()+1
 
+# get pico y placa rule inserting the year
+# pico y placa rules:
+# 1  since 2010 to september 2019: 7:00-9:30, 16:00-19:30 Pico y placa
+# 2  since september 2019 to June 2020: 5:00-20:00 Hoy no circula
+# 3  since June 2020 to July 2021: 4:00-23:00 Pandemic situation
+# 4  July 2021: 7:00-19:00 Hoy no circula
+def get_pico_placa_rule(y,m):
+    rule = {'id' : 0,
+        #(start, ending), (start, ending)...
+        'Hours':[(datetime.time(0, 0, 0),datetime.time(0, 0, 0))],
+        #key: plates final number
+        #value: days of the week
+        'Plates':{'':[]}}
+    return rule
