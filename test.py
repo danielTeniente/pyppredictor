@@ -1,6 +1,5 @@
 # testing file
 
-from datetime import date
 import unittest
 import functions 
 

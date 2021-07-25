@@ -4,6 +4,7 @@
 
 import re
 import datetime
+import collections
 
 def verify_hour(hour):
     
@@ -64,7 +65,7 @@ def get_pico_placa_rule(y,m):
         rule['Hours'] = [((7, 0, 0),(19, 0, 0))]
             #key: days of the week
             #value: final number of plates
-        rule['Days'] = {}
+        rule['Days'] = collections.defaultdict(lambda:[])
         # 4 numbers are restricted each day of the rule
         num_plate = 0
         for i in range(5):
@@ -80,7 +81,7 @@ def get_pico_placa_rule(y,m):
         rule['Hours'] = [((4, 0, 0),(23, 0, 0))]
             #key: days of the week
             #value: final number of plates
-        rule['Days'] = {}
+        rule['Days'] = collections.defaultdict(lambda:[])
         # restricted even or odd
         for i in range(1,7,2):
             rule['Days'][i] = []
@@ -97,8 +98,8 @@ def get_pico_placa_rule(y,m):
         rule['Hours'] = [((5, 0, 0),(20, 0, 0))]
             #key: days of the week
             #value: final number of plates
-        rule['Days'] = {}
-        num_plate = 0
+        rule['Days'] = collections.defaultdict(lambda:[])
+        num_plate = 1
         for i in range(5):
             rule['Days'][i+1] = []
             for _ in range(2):
@@ -111,8 +112,9 @@ def get_pico_placa_rule(y,m):
                         ((16,0,0),(19,30,0))]
             #key: days of the week
             #value: final number of plates
-        rule['Days'] = {}
-        num_plate = 0
+        #if the day doesn't have plates, there is no restrictions
+        rule['Days'] = collections.defaultdict(lambda:[])
+        num_plate = 1
         for i in range(5):
             rule['Days'][i+1] = []
             for _ in range(2):
