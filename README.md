@@ -5,14 +5,20 @@ This module can tell if a car plate can be on the road. There are four rules dep
 * [Agencia metropolitana](http://www.amt.gob.ec/index.php/servicios/hoy-no-circula.html)
 
 ## Execute the module
-Use:
-python main.py car_plate date time
-Parameters:
-car_plate: digits of the car's plate
-date: in format dd/mm/yy
-time: in format hh:mm:ss 
+Use:  
 
-example:
+python main.py car_plate date time  
+
+Parameters:  
+
+car_plate: digits of the car's plate  
+
+date: in format dd/mm/yy  
+
+time: in format hh:mm:ss  
+
+example:  
+
 python main.py AAC-0123 24/07/21 18:52:30
 
 ## Testing
